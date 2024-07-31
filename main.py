@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+import requests
 
 # Load the dataset (ensure you have the reduced_df.csv file)
 reduced_df = pd.read_csv('data/3d_embedding.csv')
@@ -34,8 +35,14 @@ if user_query:
     # Add user's message to chat history
     st.session_state.chat_history.append(f"You: {user_query}")
 
+    response = requests.post("http://localhost:8000/data_gov_chat", json={"user_question": user_query})
+
     # Here you can add logic to generate a response based on the user query
-    bot_response = "I'm a simple chatbot. How can I help you?"
+    # bot_response = "I'm a simple chatbot. How can I help you?"
+    if response.status_code == 200:
+        bot_response = response.json()['answer']
+    else:
+        bot_response = "Sorry, I couldn't find an answer to your question."
     st.session_state.chat_history.append(f"Bot: {bot_response}")
 
     # Clear the input box after submission
