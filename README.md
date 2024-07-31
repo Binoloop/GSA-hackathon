@@ -10,7 +10,7 @@ Discover relationships within datasets hosted on data.gov and also build an adva
 - [Data Collection and Processing](#data-collection-and-processing)
 - [Embedding Projector Creation](#embedding-projector)
 - [RAG Chatbot](#rag-chatbot)
-- [Querying and Response Generation](#querying-and-response-generation)
+- [Trustworthy AI](#trustworthy-ai)
 - [Summary](#summary)
 
 ## Data Collection and Processing
